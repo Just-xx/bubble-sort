@@ -28,6 +28,7 @@ class Column {
 class Columns {
   constructor() {
     this.content = [];
+    this.interval = 250;
   }
 
   append(col) {
@@ -65,7 +66,7 @@ class Columns {
       col.element.style.backgroundColor = "#b5e4f3";
       nextEl.element.style.backgroundColor = "#b5e4f3";
 
-      await this._sleep(250);
+      await this._sleep(this.interval / 2);
 
       if (col.weight > this.content[i + 1].weight) {
         this.content[i + 1] = col;
@@ -74,13 +75,11 @@ class Columns {
         nextEl.element.style.transition = "transform 120ms ease-in-out";
         col.element.style.transition = "transform 120ms ease-in-out";
 
-        await this._sleep(1);
-
         nextEl.element.style.transform = "translateX(calc(-100% - 16px))";
         col.element.style.transform = "translateX(calc(100% + 16px))";
       }
 
-      await this._sleep(250);
+      await this._sleep(this.interval / 2);
 
       nextEl.element.style.transition = "";
       col.element.style.transition = "";
@@ -137,3 +136,8 @@ function sortListener() {
 }
 
 btn.addEventListener("click", sortListener);
+
+document.querySelector('#time-range').addEventListener('change', e => {
+  columns.interval = e.target.value;
+  document.querySelector('label[for="time-range"]').textContent = `Duration (${e.target.value}ms)`;
+})

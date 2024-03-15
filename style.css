@@ -45,7 +45,7 @@ h1 {
   justify-content: start;
   gap: 16px;
   height: 320px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 32px;
 }
@@ -87,4 +87,44 @@ button {
   opacity: .4;
   pointer-events: none;
   cursor: auto;
+}
+
+.time-range-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.time-range-wrapper label {
+  font-weight: 500;
+  color: #d5e1e6;
+}
+
+#time-range {
+  appearance: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 150px;
+}
+
+#time-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #33a2c7;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+}
+
+#time-range::-moz-range-thumb {
+  background: #33a2c7;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
