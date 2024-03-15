@@ -1,11 +1,12 @@
 const correctOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
-document.querySelector(".sort-wrapper").style.gridTemplateColumns = `repeat(${correctOrder.length}, 1fr)`;
+const sortWrapper = document.querySelector(".sort-wrapper");
+sortWrapper.style.gridTemplateColumns = `repeat(${correctOrder.length}, 1fr)`;
 
 correctOrder.forEach(el => {
   const col = document.createElement("div");
   col.classList.add("column");
-  document.querySelector(".sort-wrapper").insertAdjacentElement("beforeend", col);
+  sortWrapper.insertAdjacentElement("beforeend", col);
 });
 
 const columnsElements = document.querySelectorAll(".column");
@@ -75,8 +76,8 @@ class Columns {
         nextEl.element.style.transition = "transform 120ms ease-in-out";
         col.element.style.transition = "transform 120ms ease-in-out";
 
-        nextEl.element.style.transform = "translateX(calc(-100% - 16px))";
-        col.element.style.transform = "translateX(calc(100% + 16px))";
+        nextEl.element.style.transform = `translateX(calc(-100% - ${getComputedStyle(sortWrapper).gap}))`;
+        col.element.style.transform = `translateX(calc(100% + ${getComputedStyle(sortWrapper).gap}))`;
       }
 
       await this._sleep(this.interval / 2);
