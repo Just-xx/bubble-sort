@@ -29,7 +29,7 @@ class Column {
 class Columns {
   constructor() {
     this.content = [];
-    this.interval = 250;
+    this.interval = 500;
   }
 
   append(col) {
